@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explicações Pro | ISEP & FEP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo"><img src="pratica.png"></span></div>
+        <nav>
+            <a href="#sobre">Sobre</a>
+            <a href="#disciplinas">Disciplinas</a>
+            <a href="#equipa">A Equipa</a>
+            <a href="#contacto" class="btn-nav">Reservar</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Garante o Teu <span class="blue">Sucesso Académico.</span></h1>
+        <p>Apoio especializado por estudantes do ISEP e FEP. Elevamos a tua média com rigor e clareza.</p>
+        <a href="#contacto" class="btn-main">Começar Agora</a>
+    </section>
+
+    <section id="disciplinas" class="bg-light">
+        <h2 class="section-title">Disciplinas</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="icon">📐</div>
+                <h3>Matemática & Física</h3>
+                <p>Análise, Álgebra e FQ. Com José e Diogo (ISEP).</p>
+            </div>
+            <div class="card">
+                <div class="icon">📈</div>
+                <h3>Economia & Finanças</h3>
+                <p>Micro, Macro e Finanças. Com o Manu (FEP).</p>
+            </div>
+            <div class="card">
+                <div class="icon">🌍</div>
+                <h3>Geografia</h3>
+                <p>Preparação completa para testes e exames.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="equipa">
+        <h2 class="section-title">A Vossa Equipa</h2>
+        <div class="team-grid">
+            <div class="member">
+                <div class="photo-container">
+                    <img src="https://via.placeholder.com/150" alt="José" class="member-photo">
+                </div>
+                <span class="tag isep">ISEP</span>
+                <h4>José</h4>
+                <p>Engenharia Electrotécnica. Especialista em Matemática e Sistemas.</p>
+            </div>
+
+            <div class="member">
+                <div class="photo-container">
+                    <img src="pedrogay.png" alt="Diogo" class="member-photo">
+                </div>
+                <span class="tag isep">ISEP</span>
+                <h4>Diogo</h4>
+                <p>Engenharia Electrotécnica. Focado em Física e Análise Matemática.</p>
+            </div>
+
+            <div class="member">
+                <div class="photo-container">
+                    <img src="https://via.placeholder.com/150" alt="Manu" class="member-photo">
+                </div>
+                <span class="tag fep">FEP</span>
+                <h4>Manu</h4>
+                <p>Mestrado em Finanças. O teu apoio para Economia e Gestão.</p>
+            </div>
+        </div>
+    </section>
+
+   <section id="contacto" class="cta-section">
+    <h2>Solicitar Explicação</h2>
+    <p>Escolhe o teu horário no calendário abaixo.</p>
+    
+    <div style="margin: 25px 0;">
+        <button onclick="abrirCalendario()" class="btn-main">
+            📅 Abrir Calendário de Vagas
+        </button>
+    </div>
+
+    <div style="background: #fff3cd; color: #856404; padding: 15px; border-radius: 12px; max-width: 600px; margin: 0 auto; border: 2px solid #ffeeba; text-align: center;">
+        <p style="margin: 0; font-weight: bold; font-size: 0.95rem;">
+            ⚠️ ATENÇÃO: Após escolheres o dia, no final vai aparecer um link para o nosso WhatsApp. 
+            É obrigatório clicar lá para validarmos a tua sessão!
+        </p>
+    </div>
+</section>
+
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+<script>
+    function abrirCalendario() {
+        // Verifica se o script do Calendly carregou antes de tentar abrir
+        if (typeof Calendly !== 'undefined') {
+            Calendly.initPopupWidget({
+                url: 'https://calendly.com/pratica-mais-26'
+            });
+        } else {
+            // Se o script falhar por causa do navegador, ele abre o link numa nova aba
+            window.open('https://calendly.com/pratica-mais-26', '_blank');
+        }
+        return false;
+    }
+</script>
+
+ 
+
+    <footer>
+        <p>&copy; 2024 Explicações ISEP/FEP. Made in Porto.</p>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
