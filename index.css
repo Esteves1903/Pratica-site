@@ -1,145 +1,300 @@
-:root {
-    --primary: #1e40af;
-    --secondary: #15803d;
-    --accent: #f97316;
-    --dark: #0f172a;
-    --light: #f8fafc;
-}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratica+</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<a href="javascript:void(0);" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" id="backToTop" title="Voltar ao topo">
+    <img src="imagens/pratica.png" alt="Pratica+">
+</a>
+<body>
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Inter', sans-serif; background: var(--light); color: var(--dark); scroll-behavior: smooth; }
+    <header class="navbar">
+        <div class="logo"><img src="imagens/pratica.png"></span></div>
+        <nav>
+            <a href="#sobre">Sobre</a>
+            <a href="#disciplinas">Disciplinas</a>
+            <a href="#equipa">Equipa</a>
+            <a href="#faq">FAQ</a>
+          
+        </nav>
+    </header>
 
-/* Navbar */
-html {
-    scroll-behavior: smooth;
-}
-#backToTop {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    background-color: white;
-    border-radius: 50%;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    transition: all 0.3s ease;
-    border: 2px solid #e7f3ff;
-    padding: 10px;
-    cursor: pointer; /* Garante que o rato vira a "mãozinha" */
-    z-index: 9999;   /* Força o botão a ficar à frente de TUDO */
-    text-decoration: none;
-}
+    <section class="hero">
+        <h1>Domina as notas -<span class="blue">Conquista o Teu Futuro.</span></h1>
+        <p>Apoio personalizado do 5º ao 12º ano.</p>
+       
+    </section>
 
-#backToTop img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-}
+<section id="sobre" class="bg-light" style="padding: 80px 20px; text-align: center;">
+    <div style="max-width: 900px; margin: 0 auto;">
+        <span style="color: #007bff; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">Excelência Académica ao teu Alcance</span>
+        <h2 class="section-title" style="margin-top: 10px;">Transformamos Dificuldade em Confiança</h2>
+        
+        <p style="font-size: 1.2rem; line-height: 1.8; color: #444; margin-bottom: 40px; text-align: justify;">
+            O <strong>Pratica+</strong> nasceu da vontade de três estudantes das instituições mais prestigiadas do Porto — <strong>ISEP e FEP</strong> — em elevar o padrão do apoio escolar. Com mais de <strong>2 anos de experiência</strong> em centros de explicações, percebemos que o sucesso de um aluno não depende apenas de "decorar" fórmulas, mas sim de um acompanhamento próximo, métodos práticos e uma linguagem que eles entendam.
+        </p>
 
-#backToTop:hover {
-    transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-    border-color: #007bff;
-}
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px;">
+            <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 4px solid #007bff;">
+                <h4 style="margin-bottom: 15px; color: #222;">🔬 Rigor Científico</h4>
+                <p style="font-size: 0.95rem; color: #666;">O <strong>José e o Diogo (Eng. Eletrotécnica - ISEP)</strong> especializam-se em desmistificar a Matemática e Física, focando no raciocínio lógico necessário para os exames nacionais.</p>
+            </div>
+            <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 4px solid #28a745;">
+                <h4 style="margin-bottom: 15px; color: #222;">📈 Visão Estratégica</h4>
+                <p style="font-size: 0.95rem; color: #666;">O <strong>Manuel (Mestrado em Finanças - FEP)</strong> traz a clareza e organização fundamentais para o sucesso em Economia, Geografia e Inglês.</p>
+            </div>
+        </div>
 
-/* Garante que o scroll é suave ao clicar no link # */
-html {
-    scroll-behavior: smooth;
-}
-.navbar {
-    background: white;
-    /* REDUZI O PADDING VERTICAL PARA COMPENSAR A IMAGEM MAIOR */
-    padding: 10px 5%;    /* Padding vertical reduzido para 0.1rem (antes era 0.5rem) */
-    display: flex;
-    justify-content: space-between; /* Empurra o logo para a esquerda e o menu para a direita */
-    align-items: center;            /* Centraliza verticalmente o logo e o menu */
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 1px solid #e2e8f0;
-}
+        <div style="background: #e7f3ff; padding: 25px; border-radius: 12px; display: inline-block; margin-top: 20px;">
+            <p style="margin: 0; color: #0056b3; font-weight: 600;">
+                ✓ Explicadores do 5º ao 12º Ano | ✓ Métodos de Estudo Próprios | ✓ Foco Total em Resultados
+            </p>
+        </div>
 
-/* Regras para o logo e a imagem dentro dele (AUMENTADO) */
-.logo {
-    display: flex;
-    align-items: center; /* Centraliza verticalmente se necessário */
-    text-decoration: none; /* Remove sublinhado se houver um link */
+        <p style="margin-top: 40px; font-style: italic; color: #777;">
+            "Não somos apenas explicadores; somos mentores que já estiveram no lugar dos alunos e sabemos exatamente o que é preciso para chegar ao patamar seguinte."
+        </p>
+    </div>
+</section>
+   <section id="disciplinas" class="bg-light">
+        <h2 class="section-title">Disciplinas</h2>
+        <div class="grid">
+    <a href="#detalhes-exatas" class="card-link">
+        <div class="card">
+            <div class="icon">📐</div>
+            <h3>Matemática</h3>
+            <p>Análise e Álgebra. <strong>Ver Preços</strong></p>
+        </div>
+    </a>
+
+    <a href="#detalhes-exatas" class="card-link">
+        <div class="card">
+            <div class="icon">⚛️</div>
+            <h3>Física 12º</h3>
+            <p>Mecânica e Ondas. <strong>Ver Preços</strong></p>
+        </div>
+    </a>
+
+    <a href="#detalhes-exatas" class="card-link">
+        <div class="card">
+            <div class="icon">🧪</div>
+            <h3>Fisico-Química</h3>
+            <p>Preparação para Exames. <strong>Ver Preços</strong></p>
+        </div>
+    </a>
+
+    <a href="#detalhes-humanas" class="card-link">
+        <div class="card">
+            <div class="icon">📊</div>
+            <h3>Economia</h3>
+            <p>Micro e Macroeconomia. <strong>Ver Preços</strong></p>
+        </div>
+    </a>
+
+    <a href="#detalhes-humanas" class="card-link">
+        <div class="card">
+            <div class="icon">🌍</div>
+            <h3>Geografia</h3>
+            <p>Resumos e Mapas. <strong>Ver Preços</strong></p>
+        </div>
+    </a>
+
+    <a href="#detalhes-humanas" class="card-link">
+    <div class="card">
+        <div class="icon">
+            <img src="https://flagcdn.com/w80/gb.png" 
+                 alt="UK Flag" 
+                 style="width: 45px; height: auto; border-radius: 4px; vertical-align: middle;">
+        </div>
+        <h3>Inglês</h3>
+        <p>Gramática e Oralidade. <strong>Ver Preços</strong></p>
+    </div>
+</a>
+</div>
+
+<style>
+    .card-link { text-decoration: none; color: inherit; display: block; }
+    .card:hover { transform: translateY(-5px); border-color: #007bff; transition: 0.3s; }
+</style>
+    </section>
+
+<section id="detalhes-exatas" style="padding: 80px 20px; background: #f9f9f9; text-align: center; border-bottom: 1px solid #eee;">
+    <h2 class="section-title">Matemática, Física e Química</h2>
+    <p>Professores: <strong>José & Diogo (ISEP)</strong></p>
+
+    <div class="tabela-container" style="max-width: 700px; margin: 30px auto; background: white; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); overflow: hidden;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+            <tr style="background: #e7f3ff; color: #007bff; font-weight: bold;">
+                <td style="padding: 20px;">Sessão Experimental (1ª vez)</td>
+                <td style="padding: 20px; text-decoration: line-through; color: #999; text-align: right;">15€</td>
+                <td style="padding: 20px; color: #28a745; font-size: 1.1rem; text-align: right; width: 100px; white-space: nowrap;">
+    7.50€
+</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 20px;">Hora Individual</td>
+                <td style="padding: 20px; text-align: right;"></td>
+                <td style="padding: 20px; font-weight: bold; text-align: right;">15€ / h</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 20px;">Explicações em grupo (2 pessoas)</td>
+                <td style="padding: 20px; text-align: right;"></td>
+                <td style="padding: 20px; font-weight: bold; color: #000; text-align: right;">20€ / h</td>
+            </tr>
+        </table>
+    </div>
+    <a href="#equipa" class="btn-main">Agendar com José ou Diogo</a>
+</section>
+
+<section id="detalhes-humanas" style="padding: 80px 20px; background: #ffffff; text-align: center;">
+    <h2 class="section-title">Economia, Geografia e Inglês</h2>
+    <p>Professor: <strong>Manuel Silva (FEP)</strong></p>
+
+    <div class="tabela-container" style="max-width: 700px; margin: 30px auto; background: white; border-radius: 15px; border: 2px solid #007bff; box-shadow: 0 5px 20px rgba(0,0,0,0.05); overflow: hidden;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+            <tr style="background: #e7f3ff; color: #007bff; font-weight: bold;">
+                <td style="padding: 20px;">Sessão Experimental (1ª vez)</td>
+                <td style="padding: 20px; text-decoration: line-through; color: #999; text-align: right;">15€</td>
+                <td style="padding: 20px; color: #28a745; font-size: 1.3rem; text-align: right; width: 150px;">7.50€ <br><small style="font-size: 0.7rem;">(50% OFF)</small></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 20px;">Hora Individual</td>
+                <td style="padding: 20px; text-align: right;"></td>
+                <td style="padding: 20px; font-weight: bold; text-align: right;">15€ / h</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 20px;">Explicações em grupo (2 pessoas)</td>
+                <td style="padding: 20px; text-align: right;"></td>
+                <td style="padding: 20px; font-weight: bold; color: #000; text-align: right;">20€ / h</td>
+            </tr>
+        </table>
+    </div>
+    <a href="#equipa" class="btn-main">Agendar com Manuel</a>
+</section>
+
+    <section id="equipa">
+    <h2 class="section-title">A Nossa Equipa</h2>
+    <div class="team-grid">
+        <div class="member">
+            <div class="photo-container">
+                <img src="imagens/ze.png" alt="José" class="member-photo">
+            </div>
+            <span class="tag isep">ISEP</span>
+            <h4>José</h4>
+            <p>Engenharia Electrotécnica. Especialista em Matemática e Sistemas.</p>
+            <button onclick="abrirCalendario()" class="btn-main" style="margin-top: 15px; width: 100%; font-size: 0.9rem;">
+                📅 Agendar com José
+            </button>
+        </div>
+
+        <div class="member">
+            <div class="photo-container">
+                <img src="pedrogay.png" alt="Diogo" class="member-photo">
+            </div>
+            <span class="tag isep">ISEP</span>
+            <h4>Diogo</h4>
+            <p>Engenharia Electrotécnica. Focado em Física e Análise Matemática.</p>
+            <button onclick="abrirCalendario()" class="btn-main" style="margin-top: 15px; width: 100%; font-size: 0.9rem;">
+                📅 Agendar com Diogo
+            </button>
+        </div>
+
+        <div class="member">
+            <div class="photo-container">
+                <img src="https://via.placeholder.com/150" alt="Manu" class="member-photo">
+            </div>
+            <span class="tag fep">FEP</span>
+            <h4>Manu</h4>
+            <p>Mestrado em Finanças. O teu apoio para Economia e Gestão.</p>
+            <button onclick="abrirCalendario()" class="btn-main" style="margin-top: 15px; width: 100%; font-size: 0.9rem;">
+                📅 Agendar com Manuel
+            </button>
+        </div>
+    </div>
+</section>
+
+
+
+    <div style="background: #fff3cd; color: #856404; padding: 15px; border-radius: 12px; max-width: 600px; margin: 0 auto; border: 2px solid #ffeeba; text-align: center;">
+        <p style="margin: 0; font-weight: bold; font-size: 0.95rem;">
+            ⚠️ ATENÇÃO: Após escolheres o dia, no final vai aparecer um link para o nosso WhatsApp. 
+            É obrigatório clicar lá para validarmos a tua sessão!
+        </p>
+    </div>
+</section>
+
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+<script>
+    function abrirCalendario() {
+        // Verifica se o script do Calendly carregou antes de tentar abrir
+        if (typeof Calendly !== 'undefined') {
+            Calendly.initPopupWidget({
+                url: 'https://calendly.com/pratica-mais-26'
+            });
+        } else {
+            // Se o script falhar por causa do navegador, ele abre o link numa nova aba
+            window.open('https://calendly.com/pratica-mais-26', '_blank');
+        }
+        return false;
+    }
+</script>
+
+ <section id="faq" style="padding: 60px 20px; max-width: 900px; margin: 0 auto; font-family: 'Inter', sans-serif;">
+    <h2 class="section-title" style="text-align: left; margin-bottom: 30px; color: #333;">Perguntas mais frequentes</h2>
     
-    /* Outros ajustes opcionais: */
-    margin-right: 15px;    /* Adiciona um espaço opcional entre o logo e o texto, se houver */
-}
-.logo img {
-    /* ESTE É O AJUSTE PRINCIPAL PARA AUMENTAR O LOGO */
-    height: auto;          /* Aumentei a altura para 60px (antes era 40px) */
-    width: 160px;            /* Mantém a proporção da imagem (não a distorce) */
-    
-    /* Outros ajustes opcionais: */
-    display: block;
-    object-fit: contain;         /* Remove margens extras da imagem */
-}
-.blue { color: var(--primary); }
-nav a { margin-left: 20px; text-decoration: none; color: #475569; font-weight: 600; transition: 0.3s; }
-.btn-nav { background: var(--accent); color: white !important; padding: 8px 18px; border-radius: 50px; }
+    <div class="faq-container">
+        <div class="faq-item" style="border-bottom: 1px solid #ddd; padding: 15px 0;">
+            <button onclick="toggleFAQ(this)" style="width: 100%; background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 10px 0; font-size: 1.1rem; font-weight: 600; color: #555; text-align: left;">
+                O que é o Pratica+?
+                <span class="icon">⌄</span>
+            </button>
+            <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: #666; line-height: 1.6;">
+                <p style="padding-top: 10px;">O Pratica+ é um projeto de apoio escolar focado em resultados, criado por estudantes do ISEP e FEP para ajudar alunos do 5º ao 12º ano a superar dificuldades e subir as notas.</p>
+            </div>
+        </div>
 
-/* Hero */
-.hero { padding: 100px 5%; text-align: center; background: white; }
-.hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; letter-spacing: -1.5px; }
-.btn-main { display: inline-block; background: var(--primary); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; margin-top: 20px; transition: 0.3s; }
+        <div class="faq-item" style="border-bottom: 1px solid #ddd; padding: 15px 0;">
+            <button onclick="toggleFAQ(this)" style="width: 100%; background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 10px 0; font-size: 1.1rem; font-weight: 600; color: #555; text-align: left;">
+                Como posso marcar uma aula?
+                <span class="icon">⌄</span>
+            </button>
+            <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: #666; line-height: 1.6;">
+                <p style="padding-top: 10px;">Basta clicares no botão "Agendar" do teu explicador favorito. Escolhes o horário no calendário e, no final, falas connosco pelo WhatsApp para validar!</p>
+            </div>
+        </div>
 
-/* Grid e Cards */
-.section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; font-weight: 800; }
-.bg-light { background: #f1f5f9; }
-.grid, .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        <div class="faq-item" style="border-bottom: 1px solid #ddd; padding: 15px 0;">
+            <button onclick="toggleFAQ(this)" style="width: 100%; background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 10px 0; font-size: 1.1rem; font-weight: 600; color: #555; text-align: left;">
+                Como são dadas as aulas?
+                <span class="icon">⌄</span>
+            </button>
+            <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: #666; line-height: 1.6;">
+                <p style="padding-top: 10px;">As aulas são online e focadas na resolução de exercícios práticos e esclarecimento de dúvidas específicas da matéria dada na escola.</p>
+            </div>
+        </div>
 
-.card { background: white; padding: 30px; border-radius: 20px; border: 1px solid #e2e8f0; transition: 0.3s; }
-.card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        <div class="faq-item" style="border-bottom: 1px solid #ddd; padding: 15px 0;">
+            <button onclick="toggleFAQ(this)" style="width: 100%; background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 10px 0; font-size: 1.1rem; font-weight: 600; color: #555; text-align: left;">
+                Quais são os preços?
+                <span class="icon">⌄</span>
+            </button>
+            <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: #666; line-height: 1.6;">
+                <p style="padding-top: 10px;">Temos preços a partir de 15€/h, com 50% de desconto na primeira sessão experimental. Consulta as tabelas de cada disciplina acima para mais detalhes.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-/* Equipa */
-.member { background: white; padding: 30px; border-radius: 25px; text-align: center; border: 1px solid #e2e8f0; transition: 0.3s; }
-.member:hover { border-color: var(--primary); }
-.photo-container { width: 120px; height: 120px; margin: 0 auto 20px; border-radius: 50%; overflow: hidden; border: 4px solid #f1f5f9; }
-.member-photo { width: 100%; height: 100%; object-fit: cover; }
-.tag { font-size: 0.7rem; font-weight: 800; padding: 4px 12px; border-radius: 50px; margin-bottom: 10px; display: inline-block; }
-.isep { background: #dbeafe; color: var(--primary); }
-.fep { background: #dcfce7; color: var(--secondary); }
+    <footer>
+        <p>&copy; 2026 Pratica+. Made in Porto.</p>
+    </footer>
 
-/* Contacto */
-/* Estilo para a nova secção de agendamento */
-.calendly-inline-widget {
-    margin-top: 30px;
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid #020202;
-    display: flex;
-    justify-content: center;
-    margin: 25px auto;
-}
-
-.suporte-agendamento {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-.btn-whatsapp-small {
-    display: inline-block;
-    background: #22c55e;
-    color: white;
-    padding: 10px 25px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-top: 15px;
-    transition: 0.3s;
-}
-
-.btn-whatsapp-small:hover {
-    background: #16a34a;
-    transform: translateY(-2px);
-}
-footer { text-align: center; padding: 30px; color: #94a3b8; }
+    <script src="index.js"></script>
+</body>
+</html>
