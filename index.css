@@ -70,10 +70,36 @@ table {
     }
 }
 
+.sobre-card {
+        background: white;
+        padding: 40px 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease;
+        text-align: center;
+    }
+    .sobre-card:hover {
+        transform: translateY(-10px);
+    }
+    .sobre-icon {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+    .sobre-card h3 {
+        color: #007bff;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+    }
+    .sobre-card p {
+        color: #555;
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
 /* Garante que o scroll é suave ao clicar no link # */
 html {
     scroll-behavior: smooth;
 }
+
 .navbar {
     background: white;
     /* REDUZI O PADDING VERTICAL PARA COMPENSAR A IMAGEM MAIOR */
@@ -123,6 +149,7 @@ nav a { margin-left: 20px; text-decoration: none; color: #475569; font-weight: 6
 .hero { padding: 100px 5%; text-align: center; background: white; }
 .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; letter-spacing: -1.5px; background: linear-gradient(90deg, #001f3f, #007bff);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 800;}
 .btn-main { display: inline-block; background: var(--primary); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; margin-top: 20px; transition: 0.3s; }
