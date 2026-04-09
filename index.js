@@ -8,9 +8,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 // Função para abrir o calendário em modo Popup (janela flutuante)
-function abrirCalendario() {
+function jose() {
     Calendly.initPopupWidget({
         url: 'https://calendly.com/pratica-mais-26'
+    });
+    return false;
+}
+
+function diogo() {
+    Calendly.initPopupWidget({
+        url: 'https://calendly.com/diogopraticamais'
     });
     return false;
 }
