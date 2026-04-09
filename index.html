@@ -9,11 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
 </head>
-<a href="javascript:void(0);" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" id="backToTop" title="Voltar ao topo">
-    <img src="imagens/pratica.png" alt="Pratica+">
-</a>
-<body>
 
+
+<body>
+<a href="javascript:void(0);" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" id="backToTop" title="Voltar ao topo">
+        <img src="imagens/pratica.png" alt="Pratica+"></a>
     <header class="navbar">
         <div class="logo"><img src="imagens/pratica.png"></span></div>
         <nav>
@@ -26,7 +26,7 @@
     </header>
 
     <section class="hero">
-        <h1>Domina as notas -<span class="blue">Conquista o Teu Futuro.</span></h1>
+        <h1>Domina as notas <span class="blue">Conquista o Teu Futuro.</span></h1>
         <p>Apoio personalizado do 5º ao 12º ano.</p>
        
     </section>
@@ -76,15 +76,29 @@
     <a href="#detalhes-humanas" class="card-link">
         <div class="card">
             <div class="icon">📐</div>
-            <h3>Matemática (10-12 ano)</h3>
+            <h3>Matemática A (10-12 ano)</h3>
             <p>Preparação para Exames. <strong>Ver Preços</strong></p>
         </div>
     </a>
+    <a href="#detalhes-humanas" class="card-link">
+        <div class="card">
+            <div class="icon">📈</div>
+            <h3>MACS (10-12 ano)</h3>
+            <p>Preparação para Exames. <strong>Ver Preços</strong></p>
+        </div>
     </a>
+    
     <a href="#detalhes-humanas" class="card-link">
         <div class="card">
             <div class="icon">⚛️</div>
             <h3>Física 12º</h3>
+            <p>Mecânica e Ondas. <strong>Ver Preços</strong></p>
+        </div>
+    </a>
+    <a href="#detalhes-exatas" class="card-link">
+        <div class="card">
+            <div class="icon">⚛️</div>
+            <h3>Físico-Quimica (5-9 ano)</h3>
             <p>Mecânica e Ondas. <strong>Ver Preços</strong></p>
         </div>
     </a>
@@ -291,6 +305,16 @@
             </button>
             <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: #666; line-height: 1.6;">
                 <p style="padding-top: 10px;">Temos preços a partir de 10€/h, com 50% de desconto na primeira sessão experimental. Consulta as tabelas de cada disciplina acima para mais detalhes.</p>
+            </div>
+        </div>
+         <div class="faq-item" style="border-bottom: 1px solid #ddd; padding: 15px 0;">
+            <button onclick="toggleFAQ(this)" style="width: 100%; background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 10px 0; font-size: 1.1rem; font-weight: 600; color: #555; text-align: left;">
+                Como é feito o pagamento?
+                <span class="icon">⌄</span>
+            </button>
+            <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: #666; line-height: 1.6;">
+                    <p style="padding-top: 10px;">O pagamento é feito através do MBway antes da aula com o professor.</p>
+                </div>
             </div>
         </div>
     </div>
