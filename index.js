@@ -21,6 +21,12 @@ function diogo() {
     });
     return false;
 }
+function manu() {
+    Calendly.initPopupWidget({
+        url: 'https://calendly.com/manuelpraticamais'
+    });
+    return false;
+}
 
 // Manter o efeito de scroll suave que já tinhas
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
