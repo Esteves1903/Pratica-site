@@ -28,6 +28,7 @@ function manu() {
     return false;
 }
 
+
 // Manter o efeito de scroll suave que já tinhas
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
