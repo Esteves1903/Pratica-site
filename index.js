@@ -1,70 +1,96 @@
-// Efeito de scroll suave na navegação
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-// Função para abrir o calendário em modo Popup (janela flutuante)
-function jose() {
-    Calendly.initPopupWidget({
-        url: 'https://calendly.com/pratica-mais-26'
-    });
-    return false;
-}
+const SUPABASE_URL = 'https://hpmpkimhcsftpkgjomwm.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_SQtPjwkPMQUkCIhavPkkkw_8HHwuZNm';
+const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-function diogo() {
-    Calendly.initPopupWidget({
-        url: 'https://calendly.com/diogopraticamais'
-    });
-    return false;
-}
-function manu() {
-    Calendly.initPopupWidget({
-        url: 'https://calendly.com/manuelpraticamais'
-    });
-    return false;
-}
+// Lista de horários padrão - Garante que o formato é exatamente "HH:MM"
+const HORARIOS_PADRAO = ["09:00", "10:00", "11:00", "14:00", "15:00", "16:00", "17:00", "18:00"];
 
+async function atualizarHorarios() {
+    const explicador = document.getElementById('explicador_selecionado').value;
+    const data = document.getElementById('data_aula').value;
+    const selectHora = document.getElementById('hora_aula');
 
-// Manter o efeito de scroll suave que já tinhas
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
+    if (!explicador || !data) return;
+
+    selectHora.innerHTML = '<option value="">A carregar horários livres...</option>';
+
+    try {
+        // 1. Vai buscar as horas já marcadas para este explicador e dia
+        const { data: ocupados, error } = await _supabase
+            .from('agendamentos')
+            .select('hora')
+            .eq('explicador', explicador)
+            .eq('data', data);
+
+        if (error) throw error;
+
+        // 2. Transforma o que vem da BD numa lista simples de texto limpo
+        // Se a BD devolver "09:00 ", o .trim() remove o espaço extra
+        const horasOcupadas = ocupados ? ocupados.map(item => item.hora.trim()) : [];
+
+        // 3. FILTRAGEM: Compara os horários padrão com os ocupados
+        // Só deixa passar para a lista final as horas que NÃO estão na lista de ocupadas
+        const horasLivres = HORARIOS_PADRAO.filter(hora => !horasOcupadas.includes(hora));
+
+        // 4. Limpa o menu e coloca apenas as horas que sobraram
+        selectHora.innerHTML = '<option value="">Seleciona a hora...</option>';
+        
+        if (horasLivres.length === 0) {
+            selectHora.innerHTML = '<option value="">Sem horários disponíveis</option>';
+        } else {
+            horasLivres.forEach(hora => {
+                const option = document.createElement('option');
+                option.value = hora;
+                option.textContent = hora;
+                selectHora.appendChild(option);
             });
         }
-    });
-});
-function toggleFAQ(button) {
-    const answer = button.nextElementSibling;
-    const icon = button.querySelector('.icon');
-    
-    if (answer.style.maxHeight && answer.style.maxHeight !== "0px") {
-        answer.style.maxHeight = "0px";
-        icon.style.transform = "rotate(0deg)";
-    } else {
-        answer.style.maxHeight = answer.scrollHeight + "px";
-        icon.style.transform = "rotate(180deg)";
+    } catch (err) {
+        console.error("Erro ao filtrar:", err);
+        selectHora.innerHTML = '<option value="">Erro ao carregar disponibilidade</option>';
     }
 }
-window.onscroll = function() {
-    const btn = document.getElementById("backToTop");
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        btn.style.display = "flex";
-        btn.style.opacity = "1";
-    } else {
-        btn.style.opacity = "0";
-        // Pequeno delay para a transição de opacidade funcionar antes de esconder
-        setTimeout(() => { if(btn.style.opacity === "0") btn.style.display = "none"; }, 300);
-    }
-};
 
-// Inicialmente escondido (ajusta o CSS se usares este JS)
-// No CSS do #backToTop, adiciona: display: none; opacity: 0;
-console.log("Sistema de Explicações Pro carregado!");
+// Funções Auxiliares
+function preencherExplicador(nome) {
+    const select = document.getElementById('explicador_selecionado');
+    if (select) {
+        select.value = nome;
+        document.getElementById('area-agendamento').scrollIntoView({ behavior: 'smooth' });
+        atualizarHorarios(); // Atualiza as horas mal mudas o explicador
+    }
+}
+
+// Envio do Formulário
+document.getElementById('formAgendamento').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const dados = {
+        nome_aluno: document.getElementById('nome_aluno').value,
+        explicador: document.getElementById('explicador_selecionado').value,
+        data: document.getElementById('data_aula').value,
+        hora: document.getElementById('hora_aula').value
+    };
+
+    try {
+        const { error } = await _supabase.from('agendamentos').insert([dados]);
+
+        if (error) {
+            // Se o erro for de duplicado (Unique Constraint no SQL), avisa
+            if (error.code === '23505') {
+                alert("Este horário já não está disponível. Por favor, escolhe outro.");
+                atualizarHorarios();
+                return;
+            }
+            throw error;
+        }
+
+        // Sucesso: Redireciona para WhatsApp
+        const mensagem = `Olá! Marquei uma explicação:\n Aluno: ${dados.nome_aluno}\n Explicador: ${dados.explicador}\n Data: ${dados.data}\n Hora: ${dados.hora}`;
+        window.location.href = `https://wa.me/351912345678?text=${encodeURIComponent(mensagem)}`;
+
+    } catch (err) {
+        alert("Erro ao gravar. Verifica a consola.");
+        console.error(err);
+    }
+});
