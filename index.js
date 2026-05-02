@@ -62,16 +62,27 @@ async function atualizarHorarios() {
 function setupRealtimeUpdates(explicador, data) {
     // Remove a subscrição anterior se existir
     if (realtimeSubscription) {
-        _supabase.removeSubscription(realtimeSubscription);
+        realtimeSubscription.unsubscribe();
     }
 
-    // Subscreve a mudanças na tabela agendamentos para este explicador e dia
+    // Subscreve a mudanças na tabela agendamentos (qualquer INSERT/UPDATE/DELETE)
     realtimeSubscription = _supabase
-        .from(`agendamentos:explicador=eq.${explicador}:data=eq.${data}`)
-        .on('*', (payload) => {
-            console.log("Nova mudança detetada! Atualizando horários...");
-            atualizarHorarios(); // Recarrega os horários automaticamente
-        })
+        .on(
+            'postgres_changes',
+            {
+                event: '*',
+                schema: 'public',
+                table: 'agendamentos',
+                filter: `explicador=eq.${explicador}`
+            },
+            (payload) => {
+                console.log("Nova mudança detetada! Atualizando horários...");
+                // Só atualiza se a data corresponder
+                if (payload.new?.data === data || payload.old?.data === data) {
+                    atualizarHorarios();
+                }
+            }
+        )
         .subscribe();
 }
 
