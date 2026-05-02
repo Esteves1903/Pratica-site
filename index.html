@@ -8,6 +8,8 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
+    <!-- Adicionado o SDK do Supabase para funcionar com o teu novo sistema -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 
@@ -15,7 +17,7 @@
 <a href="javascript:void(0);" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" id="backToTop" title="Voltar ao topo">
         <img src="imagens/pratica.png" alt="Pratica+"></a>
     <header class="navbar">
-        <div class="logo"><img src="imagens/pratica.png"></span></div>
+        <div class="logo"><img src="imagens/pratica.png"></div>
         <nav>
             <a href="#sobre">Sobre</a>
             <a href="#disciplinas">Disciplinas</a>
@@ -201,7 +203,7 @@
     <a href="#equipa" class="btn-main">Agendar explicação</a>
 </section>
 
-    <section id="equipa">
+<section id="equipa">
     <h2 class="section-title">A Nossa Equipa</h2>
     <div class="team-grid">
         <div class="member">
@@ -211,9 +213,10 @@
             <span class="tag isep">ISEP</span>
             <h4>José</h4>
             <p>Físico-Quimica, Fisica, MACS, Matemática A, Matemática.</p>
-            <button onclick="jose()" class="btn-main" style="margin-top: 15px; width: 100%; font-size: 0.9rem; cursor: pointer;">
+            <!-- Botão agora faz scroll para o novo formulário -->
+            <a href="#area-agendamento" class="btn-main" onclick="preencherExplicador('José')" style="text-decoration: none; display: block; margin-top: 15px; font-size: 0.9rem;">
                 📅 Agendar com José
-            </button>
+            </a>
         </div>
 
         <div class="member">
@@ -223,9 +226,9 @@
             <span class="tag isep">ISEP</span>
             <h4>Diogo</h4>
             <p>Físico-Quimica, Fisica, MACS, Matemática A, Matemática</p>
-            <button onclick="diogo()" class="btn-main" style="margin-top: 15px; width: 100%; font-size: 0.9rem; cursor: pointer;">
+            <a href="#area-agendamento" class="btn-main" onclick="preencherExplicador('Diogo')" style="text-decoration: none; display: block; margin-top: 15px; font-size: 0.9rem;">
                 📅 Agendar com Diogo
-            </button>
+            </a>
         </div>
 
         <div class="member">
@@ -235,41 +238,50 @@
             <span class="tag fep">FEP</span>
             <h4>Manuel Silva</h4>
             <p>Economia A, Inglês e MACS</p>
-            <button onclick="manu()" class="btn-main" style="margin-top: 15px; width: 100%; font-size: 0.9rem; cursor: pointer;">
+            <a href="#area-agendamento" class="btn-main" onclick="preencherExplicador('Manuel')" style="text-decoration: none; display: block; margin-top: 15px; font-size: 0.9rem;">
                 📅 Agendar com Manuel
-            
-            </button>
+            </a>
         </div>
     </div>
 </section>
 
 
+<!-- NOVO FORMULÁRIO DE AGENDAMENTO -->
+<section id="area-agendamento" style="padding: 60px 20px; background: #f0f7ff; text-align: center;">
+    <div style="max-width: 500px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; border: 2px solid #007bff; text-align: left;">
+        <h3 style="margin-top:0; color:#007bff;">Reserva o teu horário</h3>
+        <form id="formAgendamento">
+            <label style="display:block; margin-bottom: 5px; font-weight: 600;">Teu Nome:</label>
+            <input type="text" id="nome_aluno" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 8px;">
 
-    <div style="background: #fff3cd; color: #856404; padding: 15px; border-radius: 12px; max-width: 600px; margin: 0 auto; border: 2px solid #ffeeba; text-align: center;">
+            <label style="display:block; margin-bottom: 5px; font-weight: 600;">Explicador:</label>
+            <!-- Adicionado onchange para filtrar horas ao mudar o professor -->
+            <select id="explicador_selecionado" required onchange="atualizarHorarios()" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 8px;">
+                <option value="">Seleciona...</option>
+                <option value="José">José</option>
+                <option value="Diogo">Diogo</option>
+                <option value="Manuel">Manuel</option> <!-- Ajustado para 'Manuel' para coincidir com o JS -->
+            </select>
+
+            <label style="display:block; margin-bottom: 5px; font-weight: 600;">Dia:</label>
+            <!-- Adicionado onchange para filtrar horas ao mudar a data -->
+            <input type="date" id="data_aula"  onchange="atualizarHorarios()" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 8px;"> 
+
+            <label style="display:block; margin-bottom: 5px; font-weight: 600;">Hora:</label>
+            <select id="hora_aula" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px;">
+                <option value="">Escolha o dia primeiro...</option>
+            </select>
+
+            <button type="submit" class="btn-main" style="width: 100%; border: none; cursor: pointer;">Confirmar e ir para WhatsApp</button>
+        </form>
+    </div>
+
+    <div style="background: #fff3cd; color: #856404; padding: 15px; border-radius: 12px; max-width: 600px; margin: 20px auto; border: 2px solid #ffeeba; text-align: center;">
         <p style="margin: 0; font-weight: bold; font-size: 0.95rem;">
-            ⚠️ ATENÇÃO: Após escolheres o dia, no final vai aparecer um link para o nosso WhatsApp. 
-            É obrigatório clicar lá para validarmos a tua sessão!
+            ⚠️ ATENÇÃO: É obrigatório clicar no link do WhatsApp que aparecerá no final para validarmos a tua sessão!
         </p>
     </div>
 </section>
-
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-
-<script>
-    function abrirCalendario() {
-        // Verifica se o script do Calendly carregou antes de tentar abrir
-        if (typeof Calendly !== 'undefined') {
-            Calendly.initPopupWidget({
-                url: 'https://calendly.com/pratica-mais-26'
-            });
-        } else {
-            // Se o script falhar por causa do navegador, ele abre o link numa nova aba
-            window.open('https://calendly.com/pratica-mais-26', '_blank');
-        }
-        return false;
-    }
-</script>
 
  <section id="faq" style="padding: 60px 20px; max-width: 900px; margin: 0 auto; font-family: 'Inter', sans-serif;">
     <h2 class="section-title" style="text-align: left; margin-bottom: 30px; color: #333;">Perguntas mais frequentes</h2>
@@ -323,9 +335,8 @@
                     <p style="padding-top: 10px;">O pagamento é feito através do MBway após a confirmação da marcação da aula com o professor.</p>
                 </div>
             </div>
-        </div>
-        </div>
-         <div class="faq-item" style="border-bottom: 1px solid #ddd; padding: 15px 0;">
+
+        <div class="faq-item" style="border-bottom: 1px solid #ddd; padding: 15px 0;">
             <button onclick="toggleFAQ(this)" style="width: 100%; background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 10px 0; font-size: 1.1rem; font-weight: 600; color: #555; text-align: left;">
                 O que é o Pack Mensal?
                 <span class="icon">⌄</span>
@@ -334,10 +345,6 @@
                     <p style="padding-top: 10px;">O Pack Mensal é um pacote que inclui 4 aulas individuais mais acompanhamento via online sempre que surjam dúvidas.</p>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-
     </div>
 </section>
 
