@@ -9,10 +9,11 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Inter', sans-serif; background: var(--light); color: var(--dark); scroll-behavior: smooth; }
 
-/* Navbar */
+/* Navbar e Scroll */
 html {
     scroll-behavior: smooth;
 }
+
 #backToTop {
     position: fixed;
     bottom: 30px;
@@ -25,12 +26,11 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    z-index: 9999;
     transition: all 0.3s ease;
     border: 2px solid #e7f3ff;
     padding: 10px;
-    cursor: pointer; /* Garante que o rato vira a "mãozinha" */
-    z-index: 9999;   /* Força o botão a ficar à frente de TUDO */
+    cursor: pointer;
     text-decoration: none;
 }
 
@@ -46,167 +46,184 @@ html {
     border-color: #007bff;
 }
 
-/* Container para permitir scroll se a tabela for maior que o ecrã */
+/* Tabelas e Responsividade */
 .tabela-container {
     overflow-x: auto;
     width: 100%;
-    -webkit-overflow-scrolling: touch; /* Scroll suave no iPhone */
+    -webkit-overflow-scrolling: touch;
 }
 
 table {
-    min-width: 320px; /* Garante que a tabela não "encolhe" até ficar ilegível */
+    min-width: 320px;
     border-collapse: collapse;
 }
 
-/* Ajuste para ecrãs pequenos */
 @media (max-width: 480px) {
     td {
-        padding: 12px 8px !important; /* Diminui o espaço interno das células */
-        font-size: 0.85rem; /* Diminui um pouco o texto */
+        padding: 12px 8px !important;
+        font-size: 0.85rem;
     }
     
     .tabela-container td:last-child {
-        width: 80px !important; /* Dá um tamanho fixo menor à coluna do preço final */
+        width: 80px !important;
     }
 }
 
-/* Garante que o scroll é suave ao clicar no link # */
-html {
-    scroll-behavior: smooth;
-}
-.sobre-card {
-        background: white;
-        padding: 40px 30px;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        transition: transform 0.3s ease;
-        text-align: center;
-    }
-    .sobre-card:hover {
-        transform: translateY(-10px);
-    }
-    .sobre-icon {
-        font-size: 2.5rem;
-        margin-bottom: 20px;
-    }
-    .sobre-card h3 {
-        color: #007bff;
-        margin-bottom: 15px;
-        font-size: 1.5rem;
-    }
-    .sobre-card p {
-        color: #555;
-        line-height: 1.6;
-        font-size: 0.95rem;
-    }
-.navbar {
-    background: white;
-    /* REDUZI O PADDING VERTICAL PARA COMPENSAR A IMAGEM MAIOR */
-    padding: 10px 5%;    /* Padding vertical reduzido para 0.1rem (antes era 0.5rem) */
+/* Cards de Sobre */
+/* Cards de Sobre - Versão Final para Alinhamento Perfeito */
+.sobre-grid {
     display: flex;
-    justify-content: space-between; /* Empurra o logo para a esquerda e o menu para a direita */
-    align-items: center;            /* Centraliza verticalmente o logo e o menu */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.sobre-card {
+    background: white;
+    padding: 50px 35px; /* Aumentado ligeiramente para melhor respiro */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    
+    /* Alinhamento central limpo */
+    text-align: center; 
+    
+    /* Força a altura igual em todos os cards da linha */
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sobre-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.sobre-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.sobre-card h3 {
+    color: #007bff;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.sobre-card p {
+    color: #555;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    text-align: center; /* Garante que o texto fica centrado e unido */
+    margin: 0 auto;
+    width: 100%; /* Ocupa a largura disponível sem inventar espaços */
+    display: block; /* Remove o comportamento flex que estava a causar o erro na imagem */
+}
+
+/* Navbar Estilo Vidro */
+.navbar {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: sticky;
     top: 0;
     z-index: 100;
     border-bottom: 1px solid #e2e8f0;
-    background: rgba(255, 255, 255, 0.8); /* Branco transparente */
-    backdrop-filter: blur(10px); /* Efeito de vidro fosco */
+    backdrop-filter: blur(10px);
+    flex-wrap: wrap;
+}
 
-    padding: 10px 20px;
-    flex-wrap: wrap; /* Permite que os elementos "quebrem" para a linha de baixo se necessário */
-}
-.grid, .team-grid {
-    display: grid;
-    /* Isto diz: "Cria colunas com pelo menos 300px, mas se não houver espaço, mete só uma" */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-/* Regras para o logo e a imagem dentro dele (AUMENTADO) */
+/* Logo Aumentado */
 .logo {
     display: flex;
-    align-items: center; /* Centraliza verticalmente se necessário */
-    text-decoration: none; /* Remove sublinhado se houver um link */
-    
-    /* Outros ajustes opcionais: */
-    margin-right: 15px;    /* Adiciona um espaço opcional entre o logo e o texto, se houver */
+    align-items: center;
+    text-decoration: none;
+    margin-right: 15px;
 }
-.logo img {
-    /* ESTE É O AJUSTE PRINCIPAL PARA AUMENTAR O LOGO */
-    height: auto;          /* Aumentei a altura para 60px (antes era 40px) */
-    width: 160px;            /* Mantém a proporção da imagem (não a distorce) */
-    
-    /* Outros ajustes opcionais: */
-    display: block;
-    object-fit: contain;         /* Remove margens extras da imagem */
-}
-.blue { color: var(--primary); }
-nav a { margin-left: 20px; text-decoration: none; color: #475569; font-weight: 600; transition: 0.3s; }
-.btn-nav { background: var(--accent); color: white !important; padding: 8px 18px; border-radius: 50px; }
 
-/* Hero */
+.logo img {
+    height: auto;
+    width: 160px;
+    display: block;
+    object-fit: contain;
+}
+
+nav a { margin-left: 20px; text-decoration: none; color: #475569; font-weight: 600; transition: 0.3s; }
+
+/* Hero Section */
 .hero { padding: 100px 5%; text-align: center; background: white; }
-.hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; letter-spacing: -1.5px; background: linear-gradient(90deg, #001f3f, #007bff);
+.hero h1 { 
+    font-size: 3.5rem; 
+    font-weight: 800; 
+    margin-bottom: 20px; 
+    letter-spacing: -1.5px; 
+    background: linear-gradient(90deg, #001f3f, #007bff);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-weight: 800;}
-.btn-main { display: inline-block; background: var(--primary); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; margin-top: 20px; transition: 0.3s; }
+}
 
-/* Grid e Cards */
+.blue { color: var(--primary); }
+
+.btn-main { 
+    display: inline-block; 
+    background: var(--primary); 
+    color: white; 
+    padding: 15px 35px; 
+    border-radius: 50px; 
+    text-decoration: none; 
+    font-weight: 700; 
+    margin-top: 20px; 
+    transition: 0.3s; 
+    border: none;
+}
+
+/* Grid e Membros da Equipa */
 .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; font-weight: 800; }
 .bg-light { background: #f1f5f9; }
 .grid, .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-.card { background: white; padding: 30px; border-radius: 20px; border: 1px solid #e2e8f0; transition: 0.3s; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    border: 1px solid #eee; }
-.card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-color: #007bff; }
+.card, .member { background: white; padding: 30px; border-radius: 25px; border: 1px solid #e2e8f0; transition: 0.3s; text-align: center; }
+.card:hover, .member:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-color: #007bff; }
 
-/* Equipa */
-.member { background: white; padding: 30px; border-radius: 25px; text-align: center; border: 1px solid #e2e8f0; transition: 0.3s; }
-.member:hover { border-color: var(--primary); }
 .photo-container { width: 120px; height: 120px; margin: 0 auto 20px; border-radius: 50%; overflow: hidden; border: 4px solid #f1f5f9; }
-.member-photo { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; /* Círculo perfeito */
-    object-fit: cover;
-    border: 4px solid #f0f0f0;
-    transition: border-color 0.3s; }
+.member-photo { width: 100%; height: 100%; object-fit: cover; }
+
 .tag { font-size: 0.7rem; font-weight: 800; padding: 4px 12px; border-radius: 50px; margin-bottom: 10px; display: inline-block; }
 .isep { background: #dbeafe; color: var(--primary); }
 .fep { background: #dcfce7; color: var(--secondary); }
 
-/* Contacto */
-/* Estilo para a nova secção de agendamento */
-.calendly-inline-widget {
-    margin-top: 30px;
-    border-radius: 20px;
+/* FAQ */
+.faq-answer {
+    max-height: 0;
     overflow: hidden;
-    border: 1px solid #020202;
-    display: flex;
-    justify-content: center;
-    margin: 25px auto;
+    transition: max-height 0.3s ease-out;
+    color: #666;
+    line-height: 1.6;
 }
 
-.suporte-agendamento {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
+/* Novo Estilo para o Formulário de Agendamento */
+#agendamento input, #agendamento select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
 }
 
-.btn-whatsapp-small {
-    display: inline-block;
-    background: #22c55e;
-    color: white;
-    padding: 10px 25px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
+#agendamento label {
     font-size: 0.9rem;
-    margin-top: 15px;
-    transition: 0.3s;
+    font-weight: 600;
+    color: #475569;
 }
 
-.btn-whatsapp-small:hover {
-    background: #16a34a;
-    transform: translateY(-2px);
-}
-footer { text-align: center; padding: 30px; color: #94a3b8; }
+footer { text-align: center; padding: 40px 20px; color: #94a3b8; background: #1a1a1b; }
