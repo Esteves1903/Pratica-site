@@ -8,12 +8,37 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
-    <!-- Adicionado o SDK do Supabase para funcionar com o teu novo sistema -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+   
 </head>
 
 
 <body>
+    <script>
+function toggleFAQ(button) {
+    // Seleciona a resposta (div a seguir ao botão)
+    const answer = button.nextElementSibling;
+    // Seleciona o ícone (span dentro do botão)
+    const icon = button.querySelector('.icon');
+    
+    // Verifica se já está aberto
+    const isOpen = answer.style.maxHeight !== '0px' && answer.style.maxHeight !== '';
+    
+    // FECHAR TODOS OS OUTROS (Efeito Acordeão)
+    document.querySelectorAll('.faq-answer').forEach(el => {
+        el.style.maxHeight = '0px';
+    });
+    document.querySelectorAll('.faq-item .icon').forEach(i => {
+        i.style.transform = 'rotate(0deg)';
+    });
+
+    // SE ESTAVA FECHADO, ABRE ESTE
+    if (!isOpen) {
+        // scrollHeight define a altura exata do texto dinamicamente
+        answer.style.maxHeight = answer.scrollHeight + "px";
+        icon.style.transform = 'rotate(180deg)';
+    }
+}
+</script>
 <a href="javascript:void(0);" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" id="backToTop" title="Voltar ao topo">
         <img src="imagens/pratica.png" alt="Pratica+"></a>
     <header class="navbar">
@@ -46,7 +71,7 @@
                 <p>O <strong>Pratica+</strong> é formado por estudantes do <strong>ISEP e da FEP</strong> que acreditam que a educação deve ser clara, direta e acessível. Mais do que explicadores, somos mentores que falam a mesma língua dos alunos.</p>
             </div>
 
-            <div class="sobre-card" style="border-top: 5px solid #007bff;">
+            <div class="sobre-card" ">
                 
                 <h3>Missão</h3>
                 <p>Nossa missão é democratizar o sucesso escolar, oferecendo um acompanhamento de alta qualidade que transforma dificuldades em confiança e resultados reais nos exames nacionais.</p>
@@ -266,8 +291,7 @@
                 <span class="icon">⌄</span>
             </button>
             <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: #666; line-height: 1.6;">
-                <p style="padding-top: 10px;">Basta clicares no botão "Agendar" do teu explicador favorito. Escolhes o horário no calendário e, no final, falas connosco pelo WhatsApp para validar!</p>
-            </div>
+                <p style="padding-top: 10px;">Basta clicares no botão "Agendar" do teu explicador favorito. Serás redirecionado para uma conversa no WhatsApp onde poderás combinar o melhor horário para a tua explicação.</p>
         </div>
 
         <div class="faq-item" style="border-bottom: 1px solid #ddd; padding: 15px 0;">
@@ -310,6 +334,7 @@
             </div>
     </div>
 </section>
+
 
 <footer style="background: #1a1a1b; color: #fff; padding: 40px 20px; text-align: center;">
     <div style="max-width: 1000px; margin: 0 auto;">
