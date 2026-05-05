@@ -203,27 +203,17 @@ nav a { margin-left: 20px; text-decoration: none; color: #475569; font-weight: 6
 
 /* FAQ */
 .faq-answer {
-    max-height: 0;
+    max-height: 0; /* Garante que começa fechado */
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
+    transition: max-height 0.3s ease-out; /* Suaviza a abertura */
     color: #666;
     line-height: 1.6;
 }
 
-/* Novo Estilo para o Formulário de Agendamento */
-#agendamento input, #agendamento select {
-    width: 100%;
-    padding: 12px;
-    margin-top: 5px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    font-family: 'Inter', sans-serif;
+.faq-item .icon {
+    transition: transform 0.3s ease; /* Suaviza a rotação da seta */
+    display: inline-block;
 }
 
-#agendamento label {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #475569;
-}
 
 footer { text-align: center; padding: 40px 20px; color: #94a3b8; background: #1a1a1b; }
