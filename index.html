@@ -275,6 +275,7 @@ function toggleFAQ(button) {
     <h2 class="section-title" style="text-align: left; margin-bottom: 30px; color: #333;">Perguntas mais frequentes</h2>
     
     <div class="faq-container">
+        <!-- Pergunta 1 -->
         <div class="faq-item" style="border-bottom: 1px solid #ddd; padding: 15px 0;">
             <button onclick="toggleFAQ(this)" style="width: 100%; background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 10px 0; font-size: 1.1rem; font-weight: 600; color: #555; text-align: left;">
                 O que é o Pratica+?
@@ -285,6 +286,7 @@ function toggleFAQ(button) {
             </div>
         </div>
 
+        <!-- Pergunta 2 (CORRIGIDA: Adicionada a div de fecho que faltava) -->
         <div class="faq-item" style="border-bottom: 1px solid #ddd; padding: 15px 0;">
             <button onclick="toggleFAQ(this)" style="width: 100%; background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 10px 0; font-size: 1.1rem; font-weight: 600; color: #555; text-align: left;">
                 Como posso marcar uma aula?
@@ -292,8 +294,10 @@ function toggleFAQ(button) {
             </button>
             <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: #666; line-height: 1.6;">
                 <p style="padding-top: 10px;">Basta clicares no botão "Agendar" do teu explicador favorito. Serás redirecionado para uma conversa no WhatsApp onde poderás combinar o melhor horário para a tua explicação.</p>
+            </div> <!-- ESTA DIV ESTAVA A FALTAR -->
         </div>
 
+        <!-- Pergunta 3 -->
         <div class="faq-item" style="border-bottom: 1px solid #ddd; padding: 15px 0;">
             <button onclick="toggleFAQ(this)" style="width: 100%; background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 10px 0; font-size: 1.1rem; font-weight: 600; color: #555; text-align: left;">
                 Como são dadas as aulas?
@@ -304,6 +308,7 @@ function toggleFAQ(button) {
             </div>
         </div>
 
+        <!-- Pergunta 4 -->
         <div class="faq-item" style="border-bottom: 1px solid #ddd; padding: 15px 0;">
             <button onclick="toggleFAQ(this)" style="width: 100%; background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 10px 0; font-size: 1.1rem; font-weight: 600; color: #555; text-align: left;">
                 Quais são os preços?
@@ -313,25 +318,28 @@ function toggleFAQ(button) {
                 <p style="padding-top: 10px;">Temos preços a partir de 10€/h, com 50% de desconto na primeira sessão experimental. Consulta as tabelas de cada disciplina acima para mais detalhes.</p>
             </div>
         </div>
-         <div class="faq-item" style="border-bottom: 1px solid #ddd; padding: 15px 0;">
+
+        <!-- Pergunta 5 -->
+        <div class="faq-item" style="border-bottom: 1px solid #ddd; padding: 15px 0;">
             <button onclick="toggleFAQ(this)" style="width: 100%; background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 10px 0; font-size: 1.1rem; font-weight: 600; color: #555; text-align: left;">
                 Como é feito o pagamento?
                 <span class="icon">⌄</span>
             </button>
             <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: #666; line-height: 1.6;">
-                    <p style="padding-top: 10px;">O pagamento é feito através do MBway após a confirmação da marcação da aula com o professor.</p>
-                </div>
+                <p style="padding-top: 10px;">O pagamento é feito através do MBway após a confirmação da marcação da aula com o professor.</p>
             </div>
+        </div>
 
-        <div class="faq-item" style="border-bottom: 1px solid #ddd; padding: 15px 0;">
+        <!-- Pergunta 6 (Última) -->
+        <div class="faq-item" style="border-top: none; padding: 15px 0;">
             <button onclick="toggleFAQ(this)" style="width: 100%; background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 10px 0; font-size: 1.1rem; font-weight: 600; color: #555; text-align: left;">
                 O que é o Pack Mensal?
                 <span class="icon">⌄</span>
             </button>
             <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: #666; line-height: 1.6;">
-                    <p style="padding-top: 10px;">O Pack Mensal é um pacote que inclui 4 aulas individuais mais acompanhamento via online sempre que surjam dúvidas.</p>
-                </div>
+                <p style="padding-top: 10px;">O Pack Mensal é um pacote que inclui 4 aulas individuais mais acompanhamento via online sempre que surjam dúvidas.</p>
             </div>
+        </div>
     </div>
 </section>
 
