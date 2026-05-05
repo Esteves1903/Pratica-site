@@ -41,19 +41,19 @@
         <div class="sobre-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
             
             <div class="sobre-card">
-                <div class="sobre-icon">🤝</div>
+                
                 <h3>Quem Somos</h3>
                 <p>O <strong>Pratica+</strong> é formado por estudantes do <strong>ISEP e da FEP</strong> que acreditam que a educação deve ser clara, direta e acessível. Mais do que explicadores, somos mentores que falam a mesma língua dos alunos.</p>
             </div>
 
             <div class="sobre-card" style="border-top: 5px solid #007bff;">
-                <div class="sobre-icon">🚀</div>
+                
                 <h3>Missão</h3>
                 <p>Nossa missão é democratizar o sucesso escolar, oferecendo um acompanhamento de alta qualidade que transforma dificuldades em confiança e resultados reais nos exames nacionais.</p>
             </div>
 
             <div class="sobre-card">
-                <div class="sobre-icon">💎</div>
+                
                 <h3>Valores</h3>
                 <p>Baseamo-nos no <strong>rigor científico</strong>, na <strong>empatia</strong> com o aluno e na <strong>prática constante</strong>. Acreditamos que não há alunos maus, apenas métodos que precisam de ser ajustados.</p>
             </div>
@@ -149,7 +149,7 @@
                 <td style="padding: 20px;">Sessão Experimental (1ª vez)</td>
                 <td style="padding: 20px; text-decoration: line-through; color: #999; text-align: right;">10€</td>
                 <td style="padding: 20px; color: #28a745; font-size: 1.1rem; text-align: right; width: 100px; white-space: nowrap;">
-    5€
+    5€<br><small style="font-size: 0.7rem;">(50% OFF)</small><br/>
 </td>
             </tr>
             <tr style="border-bottom: 1px solid #eee;">
@@ -214,8 +214,8 @@
             <h4>José</h4>
             <p>Físico-Quimica, Fisica, MACS, Matemática A, Matemática.</p>
             <!-- Botão agora faz scroll para o novo formulário -->
-            <a href="#area-agendamento" class="btn-main" onclick="preencherExplicador('José')" style="text-decoration: none; display: block; margin-top: 15px; font-size: 0.9rem;">
-                📅 Agendar com José
+            <a href="https://wa.me/351919761389?text=Olá José! Gostaria de agendar uma explicação." target="_blank" class="btn-main" style="text-decoration: none; display: block; margin-top: 15px; font-size: 0.9rem;">
+                💬 Agendar com José
             </a>
         </div>
 
@@ -226,8 +226,8 @@
             <span class="tag isep">ISEP</span>
             <h4>Diogo</h4>
             <p>Físico-Quimica, Fisica, MACS, Matemática A, Matemática</p>
-            <a href="#area-agendamento" class="btn-main" onclick="preencherExplicador('Diogo')" style="text-decoration: none; display: block; margin-top: 15px; font-size: 0.9rem;">
-                📅 Agendar com Diogo
+            <a href="https://wa.me/351960192451?text=Olá Diogo! Gostaria de agendar uma explicação." target="_blank" class="btn-main" style="text-decoration: none; display: block; margin-top: 15px; font-size: 0.9rem;">
+                💬 Agendar com Diogo
             </a>
         </div>
 
@@ -238,50 +238,13 @@
             <span class="tag fep">FEP</span>
             <h4>Manuel Silva</h4>
             <p>Economia A, Inglês e MACS</p>
-            <a href="#area-agendamento" class="btn-main" onclick="preencherExplicador('Manuel')" style="text-decoration: none; display: block; margin-top: 15px; font-size: 0.9rem;">
-                📅 Agendar com Manuel
+            <a href="https://wa.me/351915586390?text=Olá Manuel! Gostaria de agendar uma explicação." target="_blank" class="btn-main" style="text-decoration: none; display: block; margin-top: 15px; font-size: 0.9rem;">
+                💬 Agendar com Manuel
             </a>
         </div>
     </div>
 </section>
 
-
-<!-- NOVO FORMULÁRIO DE AGENDAMENTO -->
-<section id="area-agendamento" style="padding: 60px 20px; background: #f0f7ff; text-align: center;">
-    <div style="max-width: 500px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; border: 2px solid #007bff; text-align: left;">
-        <h3 style="margin-top:0; color:#007bff;">Reserva o teu horário</h3>
-        <form id="formAgendamento">
-            <label style="display:block; margin-bottom: 5px; font-weight: 600;">Teu Nome:</label>
-            <input type="text" id="nome_aluno" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 8px;">
-
-            <label style="display:block; margin-bottom: 5px; font-weight: 600;">Explicador:</label>
-            <!-- Adicionado onchange para filtrar horas ao mudar o professor -->
-            <select id="explicador_selecionado" required onchange="atualizarHorarios()" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 8px;">
-                <option value="">Seleciona...</option>
-                <option value="José">José</option>
-                <option value="Diogo">Diogo</option>
-                <option value="Manuel">Manuel</option> <!-- Ajustado para 'Manuel' para coincidir com o JS -->
-            </select>
-
-            <label style="display:block; margin-bottom: 5px; font-weight: 600;">Dia:</label>
-            <!-- Adicionado onchange para filtrar horas ao mudar a data -->
-            <input type="date" id="data_aula"  onchange="atualizarHorarios()" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 8px;"> 
-
-            <label style="display:block; margin-bottom: 5px; font-weight: 600;">Hora:</label>
-            <select id="hora_aula" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px;">
-                <option value="">Escolha o dia primeiro...</option>
-            </select>
-
-            <button type="submit" class="btn-main" style="width: 100%; border: none; cursor: pointer;">Confirmar e ir para WhatsApp</button>
-        </form>
-    </div>
-
-    <div style="background: #fff3cd; color: #856404; padding: 15px; border-radius: 12px; max-width: 600px; margin: 20px auto; border: 2px solid #ffeeba; text-align: center;">
-        <p style="margin: 0; font-weight: bold; font-size: 0.95rem;">
-            ⚠️ ATENÇÃO: É obrigatório clicar no link do WhatsApp que aparecerá no final para validarmos a tua sessão!
-        </p>
-    </div>
-</section>
 
  <section id="faq" style="padding: 60px 20px; max-width: 900px; margin: 0 auto; font-family: 'Inter', sans-serif;">
     <h2 class="section-title" style="text-align: left; margin-bottom: 30px; color: #333;">Perguntas mais frequentes</h2>
