@@ -5,9 +5,6 @@ const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 // Lista de horários padrão - Garante que o formato é exatamente "HH:MM"
 const HORARIOS_PADRAO = ["09:00", "10:00", "11:00", "14:00", "15:00", "16:00", "17:00", "18:00"];
 
-// Variável para guardar a subscrição de tempo real
-let realtimeSubscription = null;
-
 async function atualizarHorarios() {
     const explicador = document.getElementById('explicador_selecionado').value;
     const data = document.getElementById('data_aula').value;
@@ -48,42 +45,10 @@ async function atualizarHorarios() {
                 selectHora.appendChild(option);
             });
         }
-
-        // 5. Configura atualização em tempo real quando os dados da BD mudam
-        setupRealtimeUpdates(explicador, data);
-
     } catch (err) {
         console.error("Erro ao filtrar:", err);
         selectHora.innerHTML = '<option value="">Erro ao carregar disponibilidade</option>';
     }
-}
-
-// Nova função para monitorizar mudanças em tempo real
-function setupRealtimeUpdates(explicador, data) {
-    // Remove a subscrição anterior se existir
-    if (realtimeSubscription) {
-        realtimeSubscription.unsubscribe();
-    }
-
-    // Subscreve a mudanças na tabela agendamentos (qualquer INSERT/UPDATE/DELETE)
-    realtimeSubscription = _supabase
-        .on(
-            'postgres_changes',
-            {
-                event: '*',
-                schema: 'public',
-                table: 'agendamentos',
-                filter: `explicador=eq.${explicador}`
-            },
-            (payload) => {
-                console.log("Nova mudança detetada! Atualizando horários...");
-                // Só atualiza se a data corresponder
-                if (payload.new?.data === data || payload.old?.data === data) {
-                    atualizarHorarios();
-                }
-            }
-        )
-        .subscribe();
 }
 
 // Funções Auxiliares
